@@ -1,0 +1,49 @@
+{
+  "name": "glovo-backend",
+  "version": "1.0.0",
+  "description": "Crypto Tracker application backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "lint": "standard",
+    "lint:fix": "yarn lint --fix",
+    "test:mocha": "cross-env NODE_ENV=test nyc mocha --timeout=10000 --exit --recursive",
+    "test:cover": "cross-env NODE_ENV=test yarn test:mocha \"test/**/*.test.js\"",
+    "test": "yarn lint && yarn test:cover"
+  },
+  "author": "Happiness Nwosu",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai-http": "^4.2.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "lodash": "^4.17.11",
+    "moneeda-node": "^1.1.1",
+    "nock": "^10.0.0",
+    "response-time": "^2.3.2"
+  },
+  "devDependencies": {
+    "chai": "4.1.2",
+    "cross-env": "5.1.0",
+    "faker": "4.1.0",
+    "mocha": "4.0.1",
+    "nodemon": "1.12.1",
+    "nyc": "^13.0.1",
+    "sinon": "4.0.2",
+    "sinon-chai": "2.14.0",
+    "standard": "10.0.3",
+    "supertest": "3.0.0"
+  },
+  "standard": {
+    "env": [
+      "node",
+      "mocha",
+      "chai"
+    ],
+    "globals": [
+      "expect",
+      "sinon"
+    ]
+  }
+}
