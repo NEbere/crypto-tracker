@@ -1,0 +1,64 @@
+<div class="container mainContent">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <h2 class="text-center welcomeMsg">Welcome to <span class="appName">Crypto Tracker application</span></h2>
+      <br>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div *ngIf="loading">
+        <p class="text-center">Loading products</p>
+      </div>
+
+      <div *ngIf="!loading">
+        <h4 class="text-center selectMsg">Select a product to view its prices</h4>
+        <br>
+        <form #productForm="ngForm">
+          <div class="form-group text-center">
+            <select name="productId" ngModel (change)="getProductPrices(productForm.value)" class="form-control">
+              <option value="" disabled>Choose a product</option>
+              <option *ngFor="let product of products" [ngValue]="product.id">
+                {{product.id}}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+  <!-- Product prices row -->
+  <div class="productPrices">
+    <div *ngIf="loadingPrices">
+      <p class="text-center">
+          Loading product prices...
+      </p> 
+    </div>
+    <div class="row" *ngIf="!loadingPrices">
+      <br>
+      <div class="col-4 product" *ngFor="let productPrice of productPrices">
+        <div class="productPrice">
+          <p class="exchange">{{ productPrice.exchange }}</p><br>
+          <p class="price" *ngIf="productPrice.price.price">Price: 
+              <span>{{ productPrice.price.price}}</span>
+            </p>
+            <p *ngIf="!productPrice.price.price">
+              {{productPrice.price.message}}
+            </p>
+          <p class="high" *ngIf="productPrice.price.price">
+            High: <span>{{ productPrice.price.high }}</span>
+          </p>
+          <p class="low" *ngIf="productPrice.price.price">
+            Low: <span>{{ productPrice.price.low }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

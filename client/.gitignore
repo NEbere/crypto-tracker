@@ -37,8 +37,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Coverage files
-/.nyc_output
-
-git remote set-url origin git@github.com:NEbere/crypto-tracker.git
