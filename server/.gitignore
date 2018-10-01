@@ -41,4 +41,3 @@ Thumbs.db
 # Coverage files
 /.nyc_output
 
-git remote set-url origin git@github.com:NEbere/crypto-tracker.git
